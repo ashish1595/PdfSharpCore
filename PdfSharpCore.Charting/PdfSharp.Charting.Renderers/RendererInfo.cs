@@ -125,7 +125,7 @@ namespace PdfSharpCore.Charting.Renderers
       get
       {
         if (defaultFont == null)
-          defaultFont = Converter.ToXFont(this.chart.font, new XFont("Arial", 12, XFontStyle.Regular));
+          defaultFont = Converter.ToXFont(this.chart.font, new XFont("Arial", 6, XFontStyle.Regular));
 
         return defaultFont;
       }
@@ -140,7 +140,7 @@ namespace PdfSharpCore.Charting.Renderers
       get
       {
         if (defaultDataLabelFont == null)
-          defaultDataLabelFont = Converter.ToXFont(this.chart.font, new XFont("Arial", 10, XFontStyle.Regular));
+          defaultDataLabelFont = Converter.ToXFont(this.chart.font, new XFont("Arial", 6, XFontStyle.Regular));
 
         return defaultDataLabelFont;
       }

@@ -29,7 +29,7 @@ namespace PdfSharpCore.Utils
             bool isOSX = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX);
             if (isOSX)
             {
-                fontDir = "/Library/Fonts/";
+                fontDir = "./Resources/Fonts";
                 SSupportedFonts = Directory.GetFiles(fontDir, "*.ttf", SearchOption.AllDirectories);
                 SetupFontsFiles(SSupportedFonts);
                 return;
@@ -38,8 +38,8 @@ namespace PdfSharpCore.Utils
             bool isLinux = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux);
             if (isLinux)
             {
-                fontDir = "/usr/share/fonts/truetype/";
-                SSupportedFonts = Directory.GetFiles(fontDir, "*.ttf", SearchOption.AllDirectories);
+                fontDir = "/app/Resources/Fonts";
+                SSupportedFonts = Directory.GetFiles(fontDir, "*.TTF", SearchOption.AllDirectories);
                 SetupFontsFiles(SSupportedFonts);
                 return;
             }
@@ -47,7 +47,7 @@ namespace PdfSharpCore.Utils
             bool isWindows = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows);
             if (isWindows)
             {
-                fontDir = Environment.ExpandEnvironmentVariables(@"%SystemRoot%\Fonts");
+                fontDir = "./Resources/Fonts";
                 SSupportedFonts = Directory.GetFiles(fontDir, "*.ttf", SearchOption.AllDirectories);
                 SetupFontsFiles(SSupportedFonts);
                 return;

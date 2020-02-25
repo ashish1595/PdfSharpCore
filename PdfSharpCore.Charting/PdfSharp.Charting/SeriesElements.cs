@@ -33,66 +33,77 @@ using PdfSharpCore.Drawing;
 
 namespace PdfSharpCore.Charting
 {
-  /// <summary>
-  /// Represents the collection of the values in a data series.
-  /// </summary>
-  public class SeriesElements : DocumentObjectCollection
-  {
     /// <summary>
-    /// Initializes a new instance of the SeriesElements class.
+    /// Represents the collection of the values in a data series.
     /// </summary>
-    internal SeriesElements()
+    public class SeriesElements : DocumentObjectCollection
     {
-    }
+        /// <summary>
+        /// Initializes a new instance of the SeriesElements class.
+        /// </summary>
+        internal SeriesElements()
+        {
+        }
 
-    /// <summary>
-    /// Initializes a new instance of the SeriesElements class with the specified parent.
-    /// </summary>
-    internal SeriesElements(DocumentObject parent) : base(parent) {}
+        /// <summary>
+        /// Initializes a new instance of the SeriesElements class with the specified parent.
+        /// </summary>
+        internal SeriesElements(DocumentObject parent) : base(parent) { }
 
-    /// <summary>
-    /// Gets a point by it's index.
-    /// </summary>
-    public new Point this[int index]
-    {
-      get {return (Point)base[index];}
-    }
+        /// <summary>
+        /// Gets a point by it's index.
+        /// </summary>
+        public new Point this[int index]
+        {
+            get { return (Point)base[index]; }
+        }
 
-    #region Methods
-    /// <summary>
-    /// Creates a deep copy of this object.
-    /// </summary>
-    public new SeriesElements Clone()
-    {
-      return (SeriesElements)DeepCopy();
-    }
+        public PointX getPointX(int index)
+        {
+            return base[index] as PointX;
+        }
 
-    /// <summary>
-    /// Adds a blank to the series.
-    /// </summary>
-    public void AddBlank()
-    {
-      base.Add((DocumentObject)null);
-    }
+        #region Methods
+        /// <summary>
+        /// Creates a deep copy of this object.
+        /// </summary>
+        public new SeriesElements Clone()
+        {
+            return (SeriesElements)DeepCopy();
+        }
 
-    /// <summary>
-    /// Adds a new point with a real value to the series.
-    /// </summary>
-    public Point Add(double value)
-    {
-      Point point = new Point(value);
-      Add(point);
-      return point;
-    }
+        /// <summary>
+        /// Adds a blank to the series.
+        /// </summary>
+        public void AddBlank()
+        {
+            base.Add((DocumentObject)null);
+        }
 
-    /// <summary>
-    /// Adds an array of new points with real values to the series.
-    /// </summary>
-    public void Add(params double[] values)
-    {
-      foreach (double val in values)
-        this.Add(val);
+        /// <summary>
+        /// Adds a new point with a real value to the series.
+        /// </summary>
+        public Point Add(double value)
+        {
+            Point point = new Point(value);
+            Add(point);
+            return point;
+        }
+
+        public PointX Add(double x, double y)
+        {
+            PointX point = new PointX(x, y);
+            Add(point);
+            return point;
+        }
+        /// <summary>
+        /// Adds an array of new points with real values to the series.
+        /// </summary>
+        public void Add(params double[] values)
+        {
+            foreach (double val in values)
+                this.Add(val);
+        }
+        #endregion
     }
-    #endregion
-  }
 }
